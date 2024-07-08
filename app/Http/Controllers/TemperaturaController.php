@@ -2,43 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Conversor;
 use Illuminate\Http\Request;
 
 class TemperaturaController extends Controller
 {
-    //
-
-    /**
-     * Retorna el formulario para convertir de Farenheit a Centigrados
-     *
-     * @return void
-     */
-    public function mostrarFormF2C() {
-        return view("f2c");
+    public function MostrarFarenheintACentigrados(){
+        return view('FarenheitACentígrados');
     }
 
-    /**
-     * Muestra el formulario para convertir de cenigrados a Kelvin
-     *
-     * @return view
-     */
-    public function mostrarFormC2K() {
-        return view("c2k");
+    public function ConvertirFarenheintACentigrados(Request $request){
+        $farenheit = $request->input('farenheit');
+        $c = Conversor::convertirFarenheitACentigrados($farenheit);
+        return view('FarenheitACentígrados', ['c' => $c]);
     }
 
-    /**
-     * Muestra el formulario para convertir de kelvin a centigrados
-     * @return view
-     */
-    public function mostrarFormK2C() {
-        return view("k2c");
+    public function MostrarCentigradosAFahrenheit(){
+        return view('CentigradosAFahrenheit');
     }
 
-    /**
-     * Muestra el formulario para convertir de centigrados a Kelvin
-     * @return view
-     */
-    public function mostrarFormC2F() {
-        return view("c2f");
+    public function ConvertirCentigradosAFahrenheit(Request $request){
+        $centigrados = $request->input('centigrados');
+        $f = Conversor::convertirCentigradosAFarenheit($centigrados);
+        return view('CentigradosAFahrenheit', ['f' => $f]);
+    }
+
+    public function MostrarCentigradosAKelvin(){
+        return view('CentigradosAKelvin');
+    }
+    public function ConvertirCentigradosAKelvin(Request $request){
+        $c = $request->input('centigrados');
+        $k = Conversor::convertirCentigradosAKelvin($c);
+        return view('CentigradosAKelvin', ['k' => $k]);
     }
 }

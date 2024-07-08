@@ -17,7 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/f2c', [TemperaturaController::class, 'mostrarFormF2C'])->name('f2c');
-Route::get('/c2f', [TemperaturaController::class,'mostrarFormC2F'])->name('c2f');
-Route::get('/c2k', [TemperaturaController::class, 'mostrarFormC2K'])->name('c2k');
-Route::get('/k2c', [TemperaturaController::class, 'mostrarFormK2C'])->name('k2c');
+Route::get('/FarenheintACentigrados',[TemperaturaController::class,'MostrarFarenheintACentigrados']);
+Route::post('/FarenheintACentigrados',[TemperaturaController::class,'ConvertirFarenheintACentigrados']);
+
+Route::get('/CentigradosAFahrenheit',[TemperaturaController::class,'MostrarCentigradosAFahrenheit']);
+Route::post('/CentigradosAFahrenheit',[TemperaturaController::class,'ConvertirCentigradosAFahrenheit']);
+
+Route::get('/CentigradosAKelvin',[TemperaturaController::class,'MostrarCentigradosAKelvin']);
+Route::post('/CentigradosAKelvin',[TemperaturaController::class,'ConvertirCentigradosAKelvin']);
